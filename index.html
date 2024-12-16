@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Expandable Boxes with Color Dropdown</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .box-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 440px;
+            gap: 20px;
+        }
+        .box {
+            height: 40px;
+            padding: 20px;
+            background-color: white;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .box-content {
+            display: none;
+            margin-top: 25px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .box.active .box-content {
+            display: block;
+        }
+        .box.active {
+            height: 150px;
+            background-color: white;
+            border: 2px solid #ff6b82; /* Highlight border when active */
+        }
+        .grid-container {
+            display: grid;
+            height: 10px;
+            grid-template-columns: 10% 60% 30%; 
+            padding-left: 5px;
+            vertical-align: middle;
+            align-items: left;
+        }
+        select {
+            width: 100%;
+            padding: 5px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            accent-color: #ff6b82;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <header style="color: #ff6b82;"><h2>YAY! It's BOGO</h2></header>
+    </section>
+    
+    <!--Interactive box 1-->
+    <section class="box-container">
+        <article class="box" id="box1" data-price="10">
+            <div class="grid-container">
+                <div class="grid-item"><input type="radio" name="units" checked="checked"></div>
+                <div class="grid-item"><b>1 Unit</b> &nbsp;&nbsp;&nbsp;<span style="background-color: #ff6b82;">10% Off</span><br>Standard Price</div>
+                <div class="grid-item">$<span>10.00</span>USD<br><del style="color: dimgray;">$24.00 USD</del></div>
+            </div>
+            <div class="box-content">
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <div style="height: 35px;">&nbsp;</div>
+                        <div style="height: 35px;"><b>#1</b></div>
+                        <div style="height: 35px;"><b>#2</b></div>
+                    </div>
+                    <div class="grid-item">
+                        <div>Size</div>
+                        <div style="border: 1px; border-color: dimgray;">
+                            <select onchange="changeSize(this, 'box1')">
+                                <option value="small">S</option>
+                                <option value="medium">M</option>
+                                <option value="large">L</option>
+                                <option value="xlarge">XL</option>
+                                <option value="xxlarge">XXL</option>
+                                <option value="free">Free Size</option>
+                            </select>
+                        </div>
+                        <div style="border: 1px; border-color: dimgray;">
+                            <select onchange="changeSize(this, 'box1')">
+                                <option value="small">S</option>
+                                <option value="medium">M</option>
+                                <option value="large">L</option>
+                                <option value="xlarge">XL</option>
+                                <option value="xxlarge">XXL</option>
+                                <option value="free">Free Size</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <div>Colour</div>
+                        <div style="border: 1px; border-color: dimgray;">
+                            <select onchange="changeColor(this, 'box1')">
+                                <option value="red">Red</option>
+                                <option value="green">Green</option>
+                                <option value="blue">Blue</option>
+                                <option value="yellow">Yellow</option>
+                                <option value="orange">Orange</option>
+                                <option value="purple">Purple</option>
+                                <option value="pink">Pink</option>
+                            </select>
+                        </div>
+                        <div style="border: 1px; border-color: dimgray;">
+                            <select onchange="changeColor(this, 'box1')">
+                                <option value="red">Red</option>
+                                <option value="green">Green</option>
+                                <option value="blue">Blue</option>
+                                <option value="yellow">Yellow</option>
+                                <option value="orange">Orange</option>
+                                <option value="purple">Purple</option>
+                                <option value="pink">Pink</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="box" id="box2" data-price="18">
+            <div class="grid-container">
+                <div class="grid-item"><input type="radio" name="units" ></div>
+                <div class="grid-item"><b>2 Unit</b> &nbsp;&nbsp;&nbsp;<span style="background-color: #ff6b82;">20% Off</span></div>
+                <div class="grid-item">$<span>18.00</span>USD<br><del style="color: dimgray;">$24.00 USD</del></div>
+            </div>
+            <div class="box-content">
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <div style="height: 35px;">&nbsp;</div>
+                        <div style="height: 35px;"><b>#1</b></div>
+                        <div style="height: 35px;"><b>#2</b></div>
+                    </div>
+                    <div class="grid-item">
+                        <div>Size</div>
+                        <div style="border: 1px; border-color: dimgray;">
+                            <select onchange="changeSize(this, 'box1')">
+                                <option value="small">S</option>
+                                <option value="medium">M</option>
+                                <option value="large">L</option>
+                                <option value="xlarge">XL</option>
+                                <option value="xxlarge">XXL</option>
+                                <option value="free">Free Size</option>
+                            </select>
+                        </div>
+                        <div style="border: 1px; border-color: dimgray;">
+                            <select onchange="changeSize(this, 'box1')">
+                                <option value="small">S</option>
+                                <option value="medium">M</option>
+                                <option value="large">L</option>
+                                <option value="xlarge">XL</option>
+                                <option value="xxlarge">XXL</option>
+                                <option value="free">Free Size</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <div>Colour</div>
+                        <div style="border: 1px; border-color: dimgray;">
+                            <select onchange="changeColor(this, 'box1')">
+                                <option value="red">Red</option>
+                                <option value="green">Green</option>
+                                <option value="blue">Blue</option>
+                                <option value="yellow">Yellow</option>
+                                <option value="orange">Orange</option>
+                                <option value="purple">Purple</option>
+                                <option value="pink">Pink</option>
+                            </select>
+                        </div>
+                        <div style="border: 1px; border-color: dimgray;">
+                            <select onchange="changeColor(this, 'box1')">
+                                <option value="red">Red</option>
+                                <option value="green">Green</option>
+                                <option value="blue">Blue</option>
+                                <option value="yellow">Yellow</option>
+                                <option value="orange">Orange</option>
+                                <option value="purple">Purple</option>
+                                <option value="pink">Pink</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="box" id="box3" data-price="24">
+            <div class="grid-container">
+                <div class="grid-item"><input type="radio" name="units" ></div>
+                <div class="grid-item"><b>3 Unit</b> &nbsp;&nbsp;&nbsp;<span style="background-color: #ff6b82;">30% Off</span></div>
+                <div class="grid-item">$<span>24.00</span>USD<br><del style="color: dimgray;">$24.00 USD</del></div>
+            </div>
+            <div class="box-content">
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <div style="height: 35px;">&nbsp;</div>
+                        <div style="height: 35px;"><b>#1</b></div>
+                        <div style="height: 35px;"><b>#2</b></div>
+                    </div>
+                    <div class="grid-item">
+                        <div>Size</div>
+                        <div style="border: 1px; border-color: dimgray;">
+                            <select onchange="changeSize(this, 'box1')">
+                                <option value="small">S</option>
+                                <option value="medium">M</option>
+                                <option value="large">L</option>
+                                <option value="xlarge">XL</option>
+                                <option value="xxlarge">XXL</option>
+                                <option value="free">Free Size</option>
+                            </select>
+                        </div>
+                        <div style="border: 1px; border-color: dimgray;">
+                            <select onchange="changeSize(this, 'box1')">
+                                <option value="small">S</option>
+                                <option value="medium">M</option>
+                                <option value="large">L</option>
+                                <option value="xlarge">XL</option>
+                                <option value="xxlarge">XXL</option>
+                                <option value="free">Free Size</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="grid-item">
+                        <div>Colour</div>
+                        <div style="border: 1px; border-color: dimgray;">
+                            <select onchange="changeColor(this, 'box1')">
+                                <option value="red">Red</option>
+                                <option value="green">Green</option>
+                                <option value="blue">Blue</option>
+                                <option value="yellow">Yellow</option>
+                                <option value="orange">Orange</option>
+                                <option value="purple">Purple</option>
+                                <option value="pink">Pink</option>
+                            </select>
+                        </div>
+                        <div style="border: 1px; border-color: dimgray;">
+                            <select onchange="changeColor(this, 'box1')">
+                                <option value="red">Red</option>
+                                <option value="green">Green</option>
+                                <option value="blue">Blue</option>
+                                <option value="yellow">Yellow</option>
+                                <option value="orange">Orange</option>
+                                <option value="purple">Purple</option>
+                                <option value="pink">Pink</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <section class="box-container" style="margin-top: 15px;">
+        <article>
+            <div width="100%">
+                <div style="text-align: left; color: #ff6b82;" width="30%">Free Delivery</div>
+                <div class="total-container">
+                    Total Price: $<span id="total-price">10</span>.00 USD
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <section class="box-container" style="margin-top: 15px;">
+        <article>
+            <div style="background-color: #ff6b82; text-align: center; height: 40px;" valign="middle">
+                <div style="font-size: large; color: white; padding-top: 10px;"><b>+ Add to Cart</b></div>
+            </div>
+        </article>
+    </section>
+
+    <script>
+        // Get all the box elements
+        const boxes = document.querySelectorAll('.box');
+        const totalPriceElement = document.getElementById('total-price');
+
+        // Add click event listener to each box
+        boxes.forEach(box => {
+            box.addEventListener('click', () => {
+                // Close all boxes before expanding the clicked one
+                boxes.forEach(b => {
+                    if (b !== box) {
+                        b.classList.remove('active');
+                    }
+                });
+
+                // Toggle the active class on the clicked box
+                box.classList.toggle('active');
+
+                // Update the total price if the box is active
+                if (box.classList.contains('active')) {
+                    const price = box.getAttribute('data-price');
+                    totalPriceElement.textContent = price;
+                } else {
+                    // Reset total price to 0 if no box is selected
+                    totalPriceElement.textContent = '0';
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
